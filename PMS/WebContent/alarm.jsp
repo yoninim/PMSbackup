@@ -8,7 +8,7 @@
 <title>alarm</title>
 </head>
 <body>
-	<div>
+	<div> 
 		<c:forEach var="list" items="${list}">
 			To-do List<br>
 			<li>${list.card_Name}
