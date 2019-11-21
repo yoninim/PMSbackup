@@ -22,7 +22,7 @@ public class LoginAction implements Action{
 		}else {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			forward = new ActionForward("../alarm/todoAlarm.do", true);
+			forward = new ActionForward("../alarm/todoAlarm.do", false);
 		}
 		
 		return forward;

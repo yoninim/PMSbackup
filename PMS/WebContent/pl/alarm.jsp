@@ -2,10 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-String jsonli = JSONArray.fromObject(${list}).toString();
-System.out.println(jsonli);
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +28,8 @@ $(document).ready(function() {
 </head>
 <body>
 	<div>
-		To-do List<br>
+		
+		${user.name}님의 To-do List<br>
 		<c:forEach var="list" items="${list}">
 			{"list" : "${list.card_Name}"} <br>
 		</c:forEach>
