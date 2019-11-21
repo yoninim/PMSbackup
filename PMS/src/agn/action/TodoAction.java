@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import agn.model.Card;
 import agn.service.AlarmService;
+import net.sf.json.JSONArray;
 
 public class TodoAction implements Action {
 
@@ -20,6 +21,12 @@ public class TodoAction implements Action {
 		
 		request.setAttribute("list", list);
 		
+		String jsonli = JSONArray.fromObject(list).toString();
+		System.out.println(jsonli);
+		
+		JSONArray jsonlist = new JSONArray();
+		jsonlist.add(list);
+		System.out.println(jsonlist);
 		
 		forward.setPath("../pl/alarm.jsp");
 		forward.setRedirect(false);
