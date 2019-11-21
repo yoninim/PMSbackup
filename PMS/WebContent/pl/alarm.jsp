@@ -11,7 +11,7 @@
 	<div>
 		<c:forEach var="list" items="${list}">
 			To-do List<br>
-			<li>${list.card_Name}
+			{"list":"${list.card_Name}""}
 		</c:forEach>
 	</div>
 </body>

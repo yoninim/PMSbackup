@@ -1,8 +1,16 @@
 package agn.action;
 
-public class AlarmActionForward {
+public class ActionForward {
 	private boolean isRedirect;
 	private String path;
+	
+	public ActionForward() {}
+	
+	public ActionForward(String path, boolean isRedirect) {
+		super();
+		this.path = path;
+		this.isRedirect = isRedirect;
+	}
 	
 	public boolean isRedirect() {
 		return isRedirect;

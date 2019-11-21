@@ -1,5 +1,6 @@
 package agn.dao;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import agn.mapper.AlarmMapper;
 import agn.model.Card;
+import agn.model.Users;
 
 public class AlaramDao {
 	private static AlaramDao dao = new AlaramDao();
@@ -18,7 +20,7 @@ public class AlaramDao {
 		return dao;
 	}
 	
-	public SqlSessionFactory getSessionFactory() {
+	public SqlSessionFactory getSqlSessionFactory() {
 		String resource = "mybatis-config.xml";
 		InputStream in = null;
 		try {
@@ -30,7 +32,7 @@ public class AlaramDao {
 	}
 	
 	public List<Card> todoAlarm(){
-		SqlSession sqlSession = getSessionFactory().openSession();
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Card> list = null;
 		try {
 			list = sqlSession.getMapper(AlarmMapper.class).todoAlarm();
@@ -42,5 +44,21 @@ public class AlaramDao {
 		}
 		return list;
 	}
+	
+	public Users findUser(String user_id) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		Users user = null;
+		try {
+			user = sqlSession.getMapper(AlarmMapper.class).findUser(user_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(sqlSession != null)
+			sqlSession.close();
+		}
+		return user;
+	}
+	
+	
 	
 }

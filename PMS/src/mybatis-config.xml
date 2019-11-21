@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="agn.model.Card" alias="Card"/>
+		<typeAlias type="agn.model.Users" alias="Users"/>
 	</typeAliases>
 	
 	<environments default="development"> <!-- 어떻게 연결할것인가 -->
@@ -23,6 +24,7 @@
 	
 	<mappers>
 		<mapper resource="agn/mapper/Alarm.xml"/>
+		<mapper resource="agn/mapper/User.xml"/>
 	</mappers>
 	
 </configuration>

@@ -6,6 +6,12 @@
 <mapper namespace="agn.mapper.AlarmMapper">
 	<cache />
 	
+<!--<select id="findUser" parameterType="String" resultType="Cuser">
+		select user_name , user_num
+		from cuser
+		where user_id = #{user_id}
+	</select>-->
+	
 	<select id="todoAlarm" resultType="Card">
 		select card_name 
 		  from card

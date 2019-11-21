@@ -1,29 +1,24 @@
 package agn.action;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import agn.model.Card;
+import agn.model.Cuser;
 import agn.service.AlarmService;
 
-public class TodoAction implements Action {
+public class FindUserAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		AlarmService service = AlarmService.getInstance();
 		
-		List<Card> list = service.todoAlarmService();
+		Cuser user = new Cuser();
 		
-		request.setAttribute("list", list);
+		String userId = request.getParameter("userId");
 		
-		
-		forward.setPath("../pl/alarm.jsp");
-		forward.setRedirect(false);
-		
+		forward.setPath(path);
+		forward.setRedirect(isRedirect);
 		return forward;
 	}
 

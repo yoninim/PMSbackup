@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import agn.action.AlarmAction;
-import agn.action.AlarmActionForward;
+import agn.action.Action;
+import agn.action.ActionForward;
+import agn.action.LoginAction;
+import agn.action.LoginFormAction;
 import agn.action.TodoAction;
+import agn.action.UserInsertAction;
+import agn.action.UserInsertFormAction;
 
 @WebServlet("/alarm/*")
 public class AlarmController extends HttpServlet {
@@ -25,15 +29,14 @@ public class AlarmController extends HttpServlet {
 			throws ServletException, IOException {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
-		String command = requestURI.substring(contextPath.length()+7);
-		System.out.println(command);
+		String path = requestURI.substring(contextPath.length()+7);
+		System.out.println(path);
 		
-		AlarmActionForward forward = null;
-		AlarmAction action = null;
+		ActionForward forward = null;
+		Action action = null;
 		
-		if(command.equals("todoAlarm.do")) {
+		if(path.equals("todoAlarm.do")) {
 			action = new TodoAction();
-			System.out.println(1);
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -41,6 +44,9 @@ public class AlarmController extends HttpServlet {
 			}
 		}
 
+		
+		
+		
 		if (forward != null) {
 			if (forward.isRedirect()) {
 				response.sendRedirect(forward.getPath());
