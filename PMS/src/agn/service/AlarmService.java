@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import agn.dao.AlaramDao;
+import agn.model.Alarm;
 import agn.model.Card;
 import agn.model.Users;
 
@@ -19,6 +20,10 @@ public class AlarmService {
 	
 	public List<Card> todoAlarmService(){
 		return dao.todoAlarm();
+	}
+	
+	public int insAlarmService(Alarm alarm) {
+		return dao.insAlarm(alarm);
 	}
 
 }

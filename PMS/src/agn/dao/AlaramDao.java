@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import agn.mapper.AlarmMapper;
+import agn.model.Alarm;
 import agn.model.Card;
 import agn.model.Users;
 
@@ -57,6 +58,24 @@ public class AlaramDao {
 			sqlSession.close();
 		}
 		return user;
+	}
+	
+	public int insAlarm(Alarm alarm) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		try {
+			re = sqlSession.getMapper(AlarmMapper.class).insAlarm(alarm);
+			if(re>0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return re;
 	}
 	
 	
