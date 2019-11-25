@@ -46,20 +46,6 @@ public class AlaramDao {
 		return list;
 	}
 	
-	public Users findUser(String user_id) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		Users user = null;
-		try {
-			user = sqlSession.getMapper(AlarmMapper.class).findUser(user_id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(sqlSession != null)
-			sqlSession.close();
-		}
-		return user;
-	}
-	
 	public int insAlarm(Alarm alarm) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1;

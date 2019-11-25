@@ -6,11 +6,8 @@ function createXMLRequest() {
 
 window.onload = function(){
    
-   var alarm = document.getElementByID("pushAlarm");
-   var modal = document.getElementById("myModal");   // MODAL창 배경 요소
-   var days = document.querySelectorAll(".pm_days");   // 달력 칸 하나하나의 요소
-   var modalBtn = document.getElementById("mosubmitbtn");   // 모달 서브밋 버튼
-   var inputName = document.getElementById("name");   // INPUT VALUE
+   var pushalarm = document.getElementByID("pushAlarm");
+   var divalarm = document.getElementsByTagName("div");
    
    alarm(function(item) {
        item.addEventListener("click", function() {

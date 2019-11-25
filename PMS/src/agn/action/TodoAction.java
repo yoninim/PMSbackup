@@ -6,9 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import agn.model.Card;
+import agn.model.Users;
 import agn.service.AlarmService;
-import net.sf.json.JSONArray;
 
 public class TodoAction implements Action {
 
@@ -16,9 +17,11 @@ public class TodoAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		AlarmService service = AlarmService.getInstance();
+		Users user = null;
 		
-		
-		int unum = Integer.parseInt(request.getParameter("user_num"));
+		HttpSession session = request.getSession();
+		user = (Users) session.getAttribute("user");
+		int unum = user.getUser_num();
 		
 		List<Card> list = service.todoAlarmService(unum);
 		
@@ -26,15 +29,6 @@ public class TodoAction implements Action {
 		
 		forward.setPath("../pl/alarm.jsp");
 		forward.setRedirect(false);
-		
-		
-		String jsonli = JSONArray.fromObject(list).toString();
-		System.out.println(jsonli);
-		
-		JSONArray jsonlist = new JSONArray();
-		jsonlist.add(list);
-		System.out.println(jsonlist);
-		
 		
 		return forward;
 	}

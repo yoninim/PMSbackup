@@ -7,18 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>alarm</title>
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="alarmAjax.js"></script>
 </head>
-<body >
+<body>
+${user.user_name}님의 To-do List<br>
 	<div>
-		
-		${user.name}님의 To-do List<br>
 		<c:forEach var="list" items="${list}">
-			{"list" : "${list.card_Name}"} <br>
+			list : ${list.card_content} <br>
 		</c:forEach>
-		
-
 	</div>
 	
 </body>
