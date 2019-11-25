@@ -18,8 +18,8 @@ public class AlarmService {
 		return service;
 	}
 	
-	public List<Card> todoAlarmService(){
-		return dao.todoAlarm();
+	public List<Card> todoAlarmService(int user_num){
+		return dao.todoAlarm(user_num);
 	}
 	
 	public int insAlarmService(Alarm alarm) {

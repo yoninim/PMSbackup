@@ -32,11 +32,11 @@ public class AlaramDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
-	public List<Card> todoAlarm(){
+	public List<Card> todoAlarm(int user_num){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Card> list = null;
 		try {
-			list = sqlSession.getMapper(AlarmMapper.class).todoAlarm();
+			list = sqlSession.getMapper(AlarmMapper.class).todoAlarm(user_num);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

@@ -6,11 +6,11 @@
 	<cache />
 	
 	<insert id="insertUser" parameterType="Users">
-		insert into exuser values(unum_seq.nextval, #{id}, #{name})
+		insert into users values(user_num_seq.nextval, #{user_id}, #{user_name})
 	</insert>
 	
 	<select id="selectUser" parameterType="String" resultType="Users">
-		select * from exuser where id=#{id}
+		select * from users where user_id=#{users_id}
 	</select>
 	
 	<!-- alter table delete constraint 이름; -->

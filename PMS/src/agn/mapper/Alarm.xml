@@ -5,35 +5,24 @@
 
 <mapper namespace="agn.mapper.AlarmMapper">
 	<cache />
-	
-	<!--
-	<select id="findUser" parameterType="String" resultType="Cuser">
-		select user_name , user_num
-		from cuser
-		where user_id = #{user_id}
-	</select>
-	
-		
-	<insert id="insAlarm" parameterType="Alarm">
-		insert into alarm values (#{alarm_num}, #{type_content_id, #{user_id}
-		#{type}, #{alarm_material}, sysdate)
-	</insert>
-	
-	<select id="insAlarm">
-		select 
-	</select>
-	
-	-->
-	
-	<select id="todoAlarm" resultType="Card">
-		select card_name 
-		  from card
-		 where member_num = 2
-		   and complete = 'y'
-		 order by DUEDATE_CARD_DATE DESC
+
+	<!-- <select id="findUser" parameterType="String" resultType="Cuser"> select 
+		user_name , user_num from cuser where user_id = #{user_id} </select> <insert 
+		id="insAlarm" parameterType="Alarm"> insert into alarm values (#{alarm_num}, 
+		#{type_content_id, #{user_id} #{type}, #{alarm_material}, sysdate) </insert> 
+		<select id="insAlarm"> select </select> -->
+
+	<select id="todoAlarm" parameterType="int" resultType="Card">
+		select c.card_content
+		from card c, tag_member t, b.user_board
+		where c.card_num= t.card_num
+		and b.board_num = c.board_num
+		and t.member_num = b.${user_num}
+		and card_clear = 'n'
+		order by card_due_date DESC
 	</select>
 
-	
+
 </mapper>
 
 

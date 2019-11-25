@@ -17,9 +17,16 @@ public class TodoAction implements Action {
 		ActionForward forward = new ActionForward();
 		AlarmService service = AlarmService.getInstance();
 		
-		List<Card> list = service.todoAlarmService();
+		
+		int unum = Integer.parseInt(request.getParameter("user_num"));
+		
+		List<Card> list = service.todoAlarmService(unum);
 		
 		request.setAttribute("list", list);
+		
+		forward.setPath("../pl/alarm.jsp");
+		forward.setRedirect(false);
+		
 		
 		String jsonli = JSONArray.fromObject(list).toString();
 		System.out.println(jsonli);
@@ -28,8 +35,6 @@ public class TodoAction implements Action {
 		jsonlist.add(list);
 		System.out.println(jsonlist);
 		
-		forward.setPath("../pl/alarm.jsp");
-		forward.setRedirect(false);
 		
 		return forward;
 	}

@@ -15,9 +15,9 @@
 			
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-				<property name="username" value="hr"/>
-				<property name="password" value="hr"/>
+				<property name="url" value="jdbc:oracle:thin:@kosta-yu:1521:ORCL"/>
+				<property name="username" value="pms_dba"/>
+				<property name="password" value="1234"/>
 			</dataSource>
 		</environment>		
 	</environments>
